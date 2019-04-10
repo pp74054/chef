@@ -54,6 +54,8 @@ dependency "chef"
 #
 dependency "nokogiri" # (nokogiri cannot go in the Gemfile, see wall of text in the software defn)
 
+require 'pry'
+binding.pry
 # FIXME?: might make sense to move dependencies below into the omnibus-software chef
 #  definition or into a chef-complete definition added to omnibus-software.
 dependency "gem-permissions"
