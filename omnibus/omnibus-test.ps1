@@ -34,4 +34,15 @@ $Env:PROJECT_NAME = $product
 
 Write-Output "Running verification for $product"
 
+Remove-Item -Path C:\ProgramData\chocolatey\bin\choco.exe
+# Remove-Item -Recurse -Force "$Env:ChocolateyInstall"
+# $system_path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
+# $system_path = ($system_path.Split(';') | Where-Object { $_ -NotLike "*chocolatey*" }) -join ';'
+
+# $user_path = [System.Environment]::GetEnvironmentVariable("Path", "User")
+# $user_path = ($user_path.Split(';') | Where-Object { $_ -NotLike "*chocolatey*" }) -join ';'
+
+# $Env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+
+# Set-ExecutionPolicy Bypass -Scope Process -Force
 ci/verify-chef.bat

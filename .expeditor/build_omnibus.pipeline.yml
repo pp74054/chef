@@ -1,0 +1,11 @@
+steps:
+  - label: ":mag: windows-2016-x86_64"
+    agents:
+      queue: omnibus-windows-dev
+    plugins:
+      - chef/omnibus#master:
+          test: chef
+          test-path: omnibus/omnibus-test.ps1
+          # test-path: ci/verify-chef.bat
+          test-channel: stable
+          test-version: 14.11.21
