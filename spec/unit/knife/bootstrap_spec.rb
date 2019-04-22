@@ -48,6 +48,10 @@ describe Chef::Knife::Bootstrap do
     k.merge_configs
     k
   end
+  
+  it "should fail because knife bootstrap work to accept remote EULA is not complete" do
+    expect(true).to eq(false)
+  end
 
   context "#bootstrap_template" do
     it "should default to chef-full" do
