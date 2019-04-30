@@ -596,6 +596,7 @@ class Chef
         opts = connection_opts.dup
         do_connect(opts)
       rescue Train::Error => e
+        require "net/ssh"
         if e.cause && e.cause.class == Net::SSH::AuthenticationFailed
           if connection.password_auth?
             raise
@@ -612,7 +613,6 @@ class Chef
         end
       end
 
-      # TODO - maybe remove the footgun detection this was built on.
       # url values override CLI flags, if you provide both
       # we'll use the one that you gave in the URL.
       def connection_protocol
@@ -801,6 +801,7 @@ class Chef
       def ssh_opts
         opts = {}
         return opts if connection_protocol == "winrm"
+        opts[:non_interactive] = true # Prevent password prompts from underlying net/ssh
         opts[:forward_agent] = (config_value(:ssh_forward_agent) === true)
         opts
       end
